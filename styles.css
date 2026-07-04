@@ -915,54 +915,58 @@ html.js [data-reveal] {
 }
 
 @media (min-width: 981px) {
+  html {
+    font-size: 18px;
+  }
+
   .site-header {
-    padding: 1.1rem max(1.25rem, calc((100vw - 1320px) / 2));
+    padding: 1.05rem max(1.25rem, calc((100vw - 1440px) / 2));
   }
 
   .hero {
-    grid-template-columns: minmax(0, 0.76fr) minmax(36rem, 1.24fr);
-    min-height: 88svh;
-    padding: 5.4rem max(1.25rem, calc((100vw - 1320px) / 2)) 3.2rem;
+    grid-template-columns: minmax(0, 0.74fr) minmax(40rem, 1.28fr);
+    min-height: 90svh;
+    padding: 5.2rem max(1.25rem, calc((100vw - 1440px) / 2)) 3rem;
   }
 
   .hero-content {
-    max-width: 45rem;
+    max-width: 47rem;
   }
 
   h1 {
-    max-width: 45rem;
-    font-size: 4.45rem;
+    max-width: 47rem;
+    font-size: 4.85rem;
   }
 
   h2 {
-    font-size: 3.25rem;
+    font-size: 3.45rem;
   }
 
   .hero-copy {
-    max-width: 39rem;
-    font-size: 1.12rem;
+    max-width: 41rem;
+    font-size: 1.16rem;
   }
 
   .button {
-    min-height: 3.3rem;
-    padding: 0 1.35rem;
-    font-size: 1.02rem;
+    min-height: 3.35rem;
+    padding: 0 1.45rem;
+    font-size: 1.05rem;
   }
 
   .hero-showcase {
-    width: min(100%, 53rem);
-    padding: 1rem;
+    width: min(100%, 58rem);
+    padding: 1.05rem;
   }
 
   .showcase-video {
-    min-height: 27rem;
+    min-height: 30rem;
   }
 
   .section,
   .section-pad,
   .final-cta,
   .footer {
-    width: min(1320px, calc(100% - 3rem));
+    width: min(1440px, calc(100% - 3rem));
   }
 
   .section {
