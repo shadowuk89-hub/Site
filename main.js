@@ -408,10 +408,7 @@ filterButtons.forEach((button) => {
 });
 
 let revealObserver;
-let previewObserver;
-let autoPreviewTimer;
-let scheduleAutoPreviewPlayback;
-const activeAutoPreviews = new Set();
+let updateCenteredPreview;
 
 function observeReveals() {
   const revealElements = document.querySelectorAll("[data-reveal]");
@@ -445,37 +442,34 @@ function observeReveals() {
 function observeAutoPreviews() {
   const previews = document.querySelectorAll("[data-auto-preview]");
 
-  if (previewObserver) {
-    previewObserver.disconnect();
+  if (updateCenteredPreview) {
+    window.removeEventListener("scroll", updateCenteredPreview);
+    window.removeEventListener("resize", updateCenteredPreview);
+    window.removeEventListener("touchend", updateCenteredPreview);
   }
 
-  activeAutoPreviews.clear();
-  if (scheduleAutoPreviewPlayback) {
-    window.removeEventListener("scroll", scheduleAutoPreviewPlayback);
-    window.removeEventListener("touchend", scheduleAutoPreviewPlayback);
-  }
-
-  if (!("IntersectionObserver" in window)) {
-    return;
-  }
-
-  const getVisibleRatio = (element) => {
+  const getVisibility = (element) => {
     const rect = element.getBoundingClientRect();
     const visibleTop = Math.max(rect.top, 0);
     const visibleBottom = Math.min(rect.bottom, window.innerHeight);
     const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+    const center = rect.top + rect.height / 2;
+    const viewportCenter = window.innerHeight / 2;
 
-    return rect.height ? visibleHeight / rect.height : 0;
+    return {
+      centerDistance: Math.abs(center - viewportCenter),
+      ratio: rect.height ? visibleHeight / rect.height : 0,
+    };
   };
 
-  const playSettledPreview = () => {
-    const previewsByVisibility = Array.from(activeAutoPreviews)
-      .map((preview) => ({ preview, ratio: getVisibleRatio(preview) }))
-      .filter(({ ratio }) => ratio > 0.28)
-      .sort((a, b) => b.ratio - a.ratio);
+  updateCenteredPreview = () => {
+    const centeredPreview = Array.from(previews)
+      .map((preview) => ({ preview, ...getVisibility(preview) }))
+      .filter(({ ratio }) => ratio >= 0.38)
+      .sort((a, b) => a.centerDistance - b.centerDistance)[0]?.preview;
 
     previews.forEach((preview) => {
-      if (previewsByVisibility[0]?.preview === preview) {
+      if (preview === centeredPreview) {
         preview.startPreview?.();
       } else {
         preview.stopPreview?.();
@@ -483,38 +477,10 @@ function observeAutoPreviews() {
     });
   };
 
-  const scheduleSettledPreview = () => {
-    window.clearTimeout(autoPreviewTimer);
-    autoPreviewTimer = window.setTimeout(playSettledPreview, 650);
-  };
-
-  scheduleAutoPreviewPlayback = scheduleSettledPreview;
-
-  previewObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const preview = entry.target;
-
-        if (entry.isIntersecting) {
-          activeAutoPreviews.add(preview);
-        } else {
-          activeAutoPreviews.delete(preview);
-          preview.stopPreview?.();
-        }
-      });
-
-      scheduleSettledPreview();
-    },
-    {
-      rootMargin: "0px 0px -4%",
-      threshold: 0.2,
-    },
-  );
-
-  previews.forEach((preview) => previewObserver.observe(preview));
-
-  window.addEventListener("scroll", scheduleAutoPreviewPlayback, { passive: true });
-  window.addEventListener("touchend", scheduleAutoPreviewPlayback, { passive: true });
+  window.addEventListener("scroll", updateCenteredPreview, { passive: true });
+  window.addEventListener("resize", updateCenteredPreview);
+  window.addEventListener("touchend", updateCenteredPreview, { passive: true });
+  updateCenteredPreview();
 }
 
 renderPortfolio();
