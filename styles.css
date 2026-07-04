@@ -987,6 +987,7 @@ html.js [data-reveal] {
 
   .hero {
     padding: 4.2rem 1rem 3.5rem;
+    overflow-x: clip;
   }
 
   .hero-vignette {
@@ -1009,17 +1010,28 @@ html.js [data-reveal] {
   }
 
   .hero-showcase {
+    justify-self: stretch;
     width: 100%;
-    margin-top: 1.65rem;
+    max-width: calc(100vw - 2rem);
+    margin-top: 1.45rem;
     border-radius: 10px;
-    padding: 0.65rem;
+    padding: 0.55rem;
+    overflow: hidden;
   }
 
   .showcase-topline,
   .showcase-metrics {
     align-items: flex-start;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.3rem;
+  }
+
+  .showcase-topline {
+    padding: 0.2rem 0.15rem 0.45rem;
+  }
+
+  .showcase-topline span {
+    font-size: 0.68rem;
   }
 
   .showcase-topline strong {
@@ -1027,6 +1039,7 @@ html.js [data-reveal] {
   }
 
   .showcase-video {
+    display: block;
     width: 100%;
     min-height: 0;
     aspect-ratio: 16 / 9;
@@ -1034,6 +1047,7 @@ html.js [data-reveal] {
   }
 
   .showcase-video iframe {
+    display: block;
     transform: none;
   }
 

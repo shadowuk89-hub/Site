@@ -163,10 +163,39 @@ const portfolioItems = [
 const grid = document.querySelector("[data-portfolio-grid]");
 const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
 const contactLink = document.querySelector("[data-contact-link]");
+const heroShowreel = document.querySelector("[data-youtube-autoplay]");
 
 if (contactLink) {
   contactLink.href = contact.telegram;
   contactLink.textContent = contact.label;
+}
+
+function forceYouTubePlayback(iframe) {
+  const play = () => {
+    iframe.contentWindow?.postMessage(
+      JSON.stringify({
+        event: "command",
+        func: "mute",
+        args: [],
+      }),
+      "*",
+    );
+    iframe.contentWindow?.postMessage(
+      JSON.stringify({
+        event: "command",
+        func: "playVideo",
+        args: [],
+      }),
+      "*",
+    );
+  };
+
+  iframe.addEventListener("load", play, { once: true });
+  window.setTimeout(play, 650);
+}
+
+if (heroShowreel) {
+  forceYouTubePlayback(heroShowreel);
 }
 
 function getYouTubeId(url) {
@@ -225,6 +254,7 @@ function createYouTubePreviewPlayer(videoId, title) {
     rel: "0",
     disablekb: "1",
     fs: "0",
+    enablejsapi: "1",
   });
 
   iframe.className = "work-preview-player";
@@ -233,6 +263,7 @@ function createYouTubePreviewPlayer(videoId, title) {
   iframe.allow = "autoplay; encrypted-media; picture-in-picture";
   iframe.loading = "lazy";
   iframe.tabIndex = -1;
+  forceYouTubePlayback(iframe);
 
   return iframe;
 }
@@ -431,8 +462,8 @@ function observeAutoPreviews() {
       });
     },
     {
-      rootMargin: "-12% 0px -18%",
-      threshold: 0.55,
+      rootMargin: "0px 0px -10%",
+      threshold: 0.2,
     },
   );
 
