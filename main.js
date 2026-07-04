@@ -274,9 +274,17 @@ function renderPortfolio(filter = "all") {
       card.dataset.shape = item.shape;
       card.dataset.reveal = "";
 
-      const preview = document.createElement("div");
+      const preview = item.url ? document.createElement("a") : document.createElement("div");
       preview.className = "work-preview";
-      preview.setAttribute("aria-hidden", "true");
+
+      if (item.url) {
+        preview.href = item.url;
+        preview.target = "_blank";
+        preview.rel = "noreferrer";
+        preview.setAttribute("aria-label", `Дивитись роботу: ${item.title}`);
+      } else {
+        preview.setAttribute("aria-hidden", "true");
+      }
 
       const youtubeId = getYouTubeId(item.url);
       const vimeoId = getVimeoId(item.url);
@@ -346,21 +354,7 @@ function renderPortfolio(filter = "all") {
         return tagElement;
       }));
 
-      const link = document.createElement("a");
-      link.className = "work-link";
-      link.textContent = item.url ? "Дивитись роботу" : "Додати посилання";
-
-      if (item.url) {
-        link.href = item.url;
-        link.target = "_blank";
-        link.rel = "noreferrer";
-      } else {
-        link.href = "#portfolio";
-        link.setAttribute("aria-disabled", "true");
-        link.addEventListener("click", (event) => event.preventDefault());
-      }
-
-      body.append(meta, title, tags, link);
+      body.append(meta, title, tags);
       card.append(preview, body);
       return card;
     }),
