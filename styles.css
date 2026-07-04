@@ -924,18 +924,18 @@ html.js [data-reveal] {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 0.74fr) minmax(40rem, 1.28fr);
+    grid-template-columns: minmax(0, 0.62fr) minmax(44rem, 1.42fr);
     min-height: 90svh;
     padding: 5.2rem max(1.25rem, calc((100vw - 1440px) / 2)) 3rem;
   }
 
   .hero-content {
-    max-width: 47rem;
+    max-width: 40rem;
   }
 
   h1 {
-    max-width: 47rem;
-    font-size: 4.85rem;
+    max-width: 40rem;
+    font-size: 4.45rem;
   }
 
   h2 {
@@ -943,8 +943,8 @@ html.js [data-reveal] {
   }
 
   .hero-copy {
-    max-width: 41rem;
-    font-size: 1.16rem;
+    max-width: 34rem;
+    font-size: 1.08rem;
   }
 
   .button {
@@ -954,12 +954,12 @@ html.js [data-reveal] {
   }
 
   .hero-showcase {
-    width: min(100%, 58rem);
-    padding: 1.05rem;
+    width: min(100%, 64rem);
+    padding: 1.1rem;
   }
 
   .showcase-video {
-    min-height: 30rem;
+    min-height: 33rem;
   }
 
   .section,
