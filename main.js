@@ -163,6 +163,7 @@ const portfolioItems = [
 const grid = document.querySelector("[data-portfolio-grid]");
 const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
 const contactLink = document.querySelector("[data-contact-link]");
+const brandLink = document.querySelector(".brand");
 const telegramLinks = document.querySelectorAll("[data-telegram-link]");
 const heroShowreel = document.querySelector("[data-youtube-autoplay]");
 
@@ -176,6 +177,16 @@ telegramLinks.forEach((link) => {
   link.target = "_blank";
   link.rel = "noreferrer";
 });
+
+if (brandLink) {
+  brandLink.href = contact.telegram;
+  brandLink.target = "_blank";
+  brandLink.rel = "noreferrer";
+  brandLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.open(contact.telegram, "_blank", "noreferrer");
+  });
+}
 
 function forceYouTubePlayback(iframe) {
   const play = () => {
