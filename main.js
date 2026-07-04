@@ -163,12 +163,19 @@ const portfolioItems = [
 const grid = document.querySelector("[data-portfolio-grid]");
 const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
 const contactLink = document.querySelector("[data-contact-link]");
+const telegramLinks = document.querySelectorAll("[data-telegram-link]");
 const heroShowreel = document.querySelector("[data-youtube-autoplay]");
 
 if (contactLink) {
   contactLink.href = contact.telegram;
   contactLink.textContent = contact.label;
 }
+
+telegramLinks.forEach((link) => {
+  link.href = contact.telegram;
+  link.target = "_blank";
+  link.rel = "noreferrer";
+});
 
 function forceYouTubePlayback(iframe) {
   const play = () => {
