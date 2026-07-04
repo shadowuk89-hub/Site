@@ -1009,10 +1009,7 @@ html.js [data-reveal] {
   }
 
   .hero-showcase {
-    width: 100%;
-    margin-top: 1.65rem;
-    border-radius: 10px;
-    padding: 0.65rem;
+    padding: 0.85rem;
   }
 
   .showcase-topline,
@@ -1027,14 +1024,7 @@ html.js [data-reveal] {
   }
 
   .showcase-video {
-    width: 100%;
-    min-height: 0;
-    aspect-ratio: 16 / 9;
-    border-radius: 8px;
-  }
-
-  .showcase-video iframe {
-    transform: none;
+    min-height: 14rem;
   }
 
   .hero-actions,
