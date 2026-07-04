@@ -191,7 +191,7 @@ function forceYouTubePlayback(iframe) {
   };
 
   iframe.addEventListener("load", play, { once: true });
-  window.setTimeout(play, 650);
+  [250, 900, 1800].forEach((delay) => window.setTimeout(play, delay));
 }
 
 if (heroShowreel) {
@@ -255,6 +255,7 @@ function createYouTubePreviewPlayer(videoId, title) {
     disablekb: "1",
     fs: "0",
     enablejsapi: "1",
+    origin: window.location.origin,
   });
 
   iframe.className = "work-preview-player";
@@ -408,6 +409,9 @@ filterButtons.forEach((button) => {
 
 let revealObserver;
 let previewObserver;
+let autoPreviewTimer;
+let scheduleAutoPreviewPlayback;
+const activeAutoPreviews = new Set();
 
 function observeReveals() {
   const revealElements = document.querySelectorAll("[data-reveal]");
@@ -445,9 +449,46 @@ function observeAutoPreviews() {
     previewObserver.disconnect();
   }
 
+  activeAutoPreviews.clear();
+  if (scheduleAutoPreviewPlayback) {
+    window.removeEventListener("scroll", scheduleAutoPreviewPlayback);
+    window.removeEventListener("touchend", scheduleAutoPreviewPlayback);
+  }
+
   if (!("IntersectionObserver" in window)) {
     return;
   }
+
+  const getVisibleRatio = (element) => {
+    const rect = element.getBoundingClientRect();
+    const visibleTop = Math.max(rect.top, 0);
+    const visibleBottom = Math.min(rect.bottom, window.innerHeight);
+    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+    return rect.height ? visibleHeight / rect.height : 0;
+  };
+
+  const playSettledPreview = () => {
+    const previewsByVisibility = Array.from(activeAutoPreviews)
+      .map((preview) => ({ preview, ratio: getVisibleRatio(preview) }))
+      .filter(({ ratio }) => ratio > 0.28)
+      .sort((a, b) => b.ratio - a.ratio);
+
+    previews.forEach((preview) => {
+      if (previewsByVisibility[0]?.preview === preview) {
+        preview.startPreview?.();
+      } else {
+        preview.stopPreview?.();
+      }
+    });
+  };
+
+  const scheduleSettledPreview = () => {
+    window.clearTimeout(autoPreviewTimer);
+    autoPreviewTimer = window.setTimeout(playSettledPreview, 650);
+  };
+
+  scheduleAutoPreviewPlayback = scheduleSettledPreview;
 
   previewObserver = new IntersectionObserver(
     (entries) => {
@@ -455,19 +496,25 @@ function observeAutoPreviews() {
         const preview = entry.target;
 
         if (entry.isIntersecting) {
-          preview.startPreview?.();
+          activeAutoPreviews.add(preview);
         } else {
+          activeAutoPreviews.delete(preview);
           preview.stopPreview?.();
         }
       });
+
+      scheduleSettledPreview();
     },
     {
-      rootMargin: "0px 0px -10%",
+      rootMargin: "0px 0px -4%",
       threshold: 0.2,
     },
   );
 
   previews.forEach((preview) => previewObserver.observe(preview));
+
+  window.addEventListener("scroll", scheduleAutoPreviewPlayback, { passive: true });
+  window.addEventListener("touchend", scheduleAutoPreviewPlayback, { passive: true });
 }
 
 renderPortfolio();
