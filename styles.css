@@ -958,13 +958,15 @@ html.js [data-reveal] {
   }
 
   .hero-showcase {
-    width: min(100%, 64rem);
-    max-width: 100%;
+    justify-self: stretch;
+    width: 100%;
+    max-width: 64rem;
     padding: 1.1rem;
   }
 
   .showcase-video {
     width: 100%;
+    max-width: 100%;
     min-height: 33rem;
   }
 
