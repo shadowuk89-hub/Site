@@ -295,6 +295,7 @@ h3 {
   gap: 0.85rem;
   justify-self: end;
   width: min(100%, 47rem);
+  min-width: 0;
   margin-top: 1.8rem;
   border: 0;
   border-radius: 12px;
@@ -375,6 +376,7 @@ h3 {
 .showcase-frame {
   display: grid;
   gap: 0.8rem;
+  min-width: 0;
   border: 0;
   border-radius: 10px;
   padding: 0;
@@ -383,6 +385,8 @@ h3 {
 
 .showcase-video {
   position: relative;
+  width: 100%;
+  min-width: 0;
   aspect-ratio: 16 / 9;
   min-height: 24rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -955,10 +959,12 @@ html.js [data-reveal] {
 
   .hero-showcase {
     width: min(100%, 64rem);
+    max-width: 100%;
     padding: 1.1rem;
   }
 
   .showcase-video {
+    width: 100%;
     min-height: 33rem;
   }
 
