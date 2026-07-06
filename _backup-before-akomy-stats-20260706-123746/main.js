@@ -166,7 +166,6 @@ const contactLink = document.querySelector("[data-contact-link]");
 const brandLink = document.querySelector(".brand");
 const telegramLinks = document.querySelectorAll("[data-telegram-link]");
 const heroShowreel = document.querySelector("[data-youtube-autoplay]");
-const heroProcessVideo = document.querySelector("[data-hero-process-video]");
 
 if (contactLink) {
   contactLink.href = contact.telegram;
@@ -215,29 +214,6 @@ function forceYouTubePlayback(iframe) {
 
 if (heroShowreel) {
   forceYouTubePlayback(heroShowreel);
-}
-
-if (heroProcessVideo?.dataset.src) {
-  const processVideoSource = heroProcessVideo.dataset.src;
-
-  fetch(processVideoSource, { method: "HEAD" })
-    .then((response) => {
-      if (!response.ok) {
-        return;
-      }
-
-      heroProcessVideo.src = processVideoSource;
-      heroProcessVideo.addEventListener(
-        "canplay",
-        () => {
-          heroProcessVideo.closest(".hero-media")?.classList.add("has-process-video");
-          heroProcessVideo.play().catch(() => {});
-        },
-        { once: true },
-      );
-      heroProcessVideo.load();
-    })
-    .catch(() => {});
 }
 
 function getYouTubeId(url) {

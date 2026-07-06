@@ -5,9 +5,9 @@
   --font-variant-editorial: "Segoe UI Variable Display", "Segoe UI Variable", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
   --font-variant-sharp: Bahnschrift, "Segoe UI Variable", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
   --font-variant-akomy: Akomy, Bahnschrift, "Segoe UI Variable", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-original);
-  --font-display: var(--font-original);
-  --font-ui: var(--font-original);
+  --font-body: var(--font-variant-clean);
+  --font-display: var(--font-variant-akomy);
+  --font-ui: var(--font-variant-clean);
   font-family: var(--font-body);
   --bg: #08090a;
   --surface: rgba(18, 20, 22, 0.74);
@@ -162,7 +162,7 @@ button {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(27rem, 0.74fr) minmax(36rem, 1.26fr);
+  grid-template-columns: minmax(28rem, 0.82fr) minmax(32rem, 1.18fr);
   align-items: center;
   min-height: auto;
   padding: 6.4rem max(1.25rem, calc((100vw - 1440px) / 2)) 2.2rem;
@@ -175,33 +175,11 @@ button {
   z-index: -2;
 }
 
-.hero-process-video,
 .hero-media img {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
-
-.hero-process-video {
-  opacity: 0;
-  filter: blur(10px) saturate(0.96) contrast(1.15) brightness(0.78);
-  transform: scale(1.12);
-  transition: opacity 700ms ease;
-}
-
-.hero-media.has-process-video .hero-process-video {
-  opacity: 0.62;
-}
-
-.hero-media.has-process-video img {
-  opacity: 0.24;
-  filter: saturate(0.82) contrast(1.08) brightness(0.75);
-}
-
-.hero-media img {
   opacity: 0.64;
   filter: saturate(0.92) contrast(1.05);
 }
@@ -347,7 +325,7 @@ h3 {
   display: grid;
   gap: 0.85rem;
   justify-self: end;
-  width: min(100%, 54rem);
+  width: min(100%, 47.5rem);
   min-width: 0;
   margin-top: 0;
   border: 0;
@@ -361,7 +339,6 @@ h3 {
     0 2rem 5rem rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(22px);
-  transform: translateX(2.8rem);
   transition:
     transform 220ms ease,
     border-color 220ms ease,
@@ -369,7 +346,7 @@ h3 {
 }
 
 .hero-showcase:hover {
-  transform: translateX(2.8rem) translateY(-6px);
+  transform: translateY(-6px);
   background:
     linear-gradient(135deg, rgba(101, 209, 201, 0.13), transparent 48%),
     linear-gradient(225deg, rgba(216, 182, 106, 0.12), transparent 44%),
@@ -1795,18 +1772,6 @@ html.js [data-reveal] {
   opacity: 1;
 }
 
-.hero-showcase[data-reveal] {
-  transform: translateX(2.8rem) translateY(18px);
-}
-
-.hero-showcase[data-reveal].is-visible {
-  transform: translateX(2.8rem);
-}
-
-.hero-showcase[data-reveal].is-visible:hover {
-  transform: translateX(2.8rem) translateY(-6px);
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1827,7 +1792,7 @@ html.js [data-reveal] {
   }
 
   .hero {
-    grid-template-columns: minmax(29rem, 0.74fr) minmax(48rem, 1.26fr);
+    grid-template-columns: minmax(30rem, 0.82fr) minmax(42rem, 1.18fr);
     min-height: auto;
     padding: 6rem max(1.5rem, calc((100vw - 1440px) / 2)) 2.4rem;
   }
@@ -1859,7 +1824,7 @@ html.js [data-reveal] {
   .hero-showcase {
     justify-self: stretch;
     width: 100%;
-    max-width: 56rem;
+    max-width: 48rem;
     padding: 1.1rem;
   }
 
@@ -1949,7 +1914,6 @@ html.js [data-reveal] {
     width: min(100%, 50rem);
     margin-top: 2.5rem;
     margin-bottom: 0;
-    transform: none;
   }
 
   .final-cta {
