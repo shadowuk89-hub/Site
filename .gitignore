@@ -1,0 +1,10 @@
+# Local backup copies are not part of the published website.
+_backup-*/
+
+# Local development files.
+node_modules/
+npm-debug.log*
+.agents/
+.codex/
+.DS_Store
+Thumbs.db
