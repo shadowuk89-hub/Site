@@ -2288,3 +2288,401 @@ html.js [data-reveal] {
     gap: 0.8rem;
   }
 }
+
+@media (max-width: 680px) {
+  .site-header {
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.72rem 0.85rem;
+  }
+
+  .brand {
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .brand-mark {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.68rem;
+  }
+
+  .brand-text {
+    max-width: 7.6rem;
+    overflow: hidden;
+    font-size: 0.72rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .nav {
+    gap: 0.62rem;
+    font-size: 0.72rem;
+  }
+
+  .hero {
+    justify-items: center;
+    padding: 3.65rem 0.85rem 2.9rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.75rem;
+    font-size: 0.68rem;
+  }
+
+  h1 {
+    max-width: 20rem;
+    font-size: 2.05rem;
+    line-height: 1.04;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    line-height: 1.08;
+  }
+
+  .hero-copy {
+    max-width: 21rem;
+    margin-bottom: 1.35rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 21rem;
+  }
+
+  .button,
+  .filter-button {
+    min-height: 2.75rem;
+    padding: 0 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  .hero-showcase,
+  .hero-showcase[data-reveal],
+  .hero-showcase[data-reveal].is-visible,
+  .hero-showcase[data-reveal].is-visible:hover {
+    justify-self: center;
+    width: min(100%, 22rem);
+    max-width: 100%;
+    margin: 1.25rem auto 0;
+    transform: none !important;
+  }
+
+  .hero-showcase {
+    gap: 0.5rem;
+    border-radius: 8px;
+    padding: 0.48rem;
+  }
+
+  .showcase-topline {
+    justify-content: center;
+    padding: 0.15rem 0.1rem 0.36rem;
+    text-align: center;
+  }
+
+  .showcase-topline span {
+    width: 100%;
+    font-size: 0.62rem;
+  }
+
+  .showcase-frame,
+  .showcase-video {
+    width: 100%;
+  }
+
+  .hero-proof,
+  .section,
+  .final-cta,
+  .footer {
+    width: min(100% - 1.5rem, 24rem);
+  }
+
+  .hero-proof {
+    justify-items: center;
+    padding-bottom: 2.8rem;
+  }
+
+  .proof-stats,
+  .review-cards,
+  .workflow,
+  .portfolio-grid,
+  .final-gallery,
+  .final-benefits {
+    width: 100%;
+  }
+
+  .proof-stats article {
+    grid-template-columns: 2.65rem 1fr;
+    column-gap: 0.85rem;
+    padding: 0.95rem;
+    text-align: left;
+  }
+
+  .proof-icon {
+    width: 2.45rem;
+    height: 2.45rem;
+    font-size: 0.9rem;
+  }
+
+  .proof-stats strong {
+    font-size: 1.55rem;
+  }
+
+  .proof-stats p,
+  .review-cards p,
+  .workflow li > span {
+    font-size: 0.82rem;
+  }
+
+  .proof-bottom {
+    width: 100%;
+    gap: 1.8rem;
+  }
+
+  .mini-section-head {
+    text-align: center;
+  }
+
+  .mini-section-head h2 {
+    font-size: 1.18rem;
+  }
+
+  .mini-section-head h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .review-cards article {
+    padding: 0.86rem;
+  }
+
+  .workflow li {
+    grid-template-columns: 2.9rem 1fr;
+    gap: 0.75rem;
+    padding: 0.15rem 0;
+  }
+
+  .workflow li::before {
+    width: 2.85rem;
+    height: 2.85rem;
+  }
+
+  .workflow li > span::after {
+    top: 0.84rem;
+    left: 0.82rem;
+    transform: scale(0.82);
+    transform-origin: center;
+  }
+
+  .workflow li[data-icon="chat"] span::before,
+  .workflow li[data-icon="folder"] span::before,
+  .workflow li[data-icon="clapper"] span::before {
+    left: 0.8rem;
+    transform: scale(0.82);
+    transform-origin: center;
+  }
+
+  .workflow li[data-icon="send"] > span::after {
+    left: 0.95rem;
+  }
+
+  .section {
+    padding: 3.25rem 0;
+  }
+
+  .section-head {
+    justify-items: center;
+    gap: 1.05rem;
+    margin-bottom: 1.35rem;
+    text-align: center;
+  }
+
+  .section-head > div:first-child {
+    max-width: 22rem;
+  }
+
+  .filter-bar {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 22rem;
+    margin: 0 auto;
+  }
+
+  .work-card {
+    width: 100%;
+    max-width: 22rem;
+    margin: 0 auto;
+  }
+
+  .work-preview,
+  .work-card[data-shape="vertical"] .work-preview {
+    aspect-ratio: 16 / 10;
+  }
+
+  .work-body {
+    gap: 0.72rem;
+    padding: 0.82rem;
+  }
+
+  .work-meta {
+    gap: 0.6rem;
+    font-size: 0.66rem;
+  }
+
+  .work-card h3 {
+    font-size: 1.04rem;
+  }
+
+  .work-tags {
+    gap: 0.34rem;
+  }
+
+  .work-tags span {
+    padding: 0.28rem 0.38rem;
+    font-size: 0.68rem;
+  }
+
+  .final-cta {
+    justify-items: center;
+    padding: 1.55rem 0.75rem 0.9rem;
+    text-align: center;
+  }
+
+  .final-copy,
+  .final-side {
+    width: 100%;
+  }
+
+  .final-copy h2 {
+    font-size: 2rem;
+  }
+
+  .final-copy > p:not(.eyebrow) {
+    max-width: 21rem;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 0.9rem;
+  }
+
+  .final-benefits article,
+  .final-benefits article:first-child {
+    grid-template-columns: 3rem 1fr;
+    padding-top: 0.85rem;
+  }
+
+  .benefit-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .final-shot {
+    min-height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .final-brief {
+    padding: 0.95rem;
+    text-align: left;
+  }
+
+  .final-brief h3 {
+    font-size: 1.04rem;
+  }
+
+  .final-contact {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .final-note {
+    justify-self: center;
+  }
+
+  .footer {
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+@media (min-width: 681px) and (max-width: 980px) {
+  .hero {
+    justify-items: center;
+  }
+
+  .hero-content {
+    display: grid;
+    justify-items: center;
+    max-width: 42rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-copy {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-showcase,
+  .hero-showcase[data-reveal],
+  .hero-showcase[data-reveal].is-visible,
+  .hero-showcase[data-reveal].is-visible:hover {
+    justify-self: center;
+    width: min(100%, 44rem);
+    margin-right: auto;
+    margin-left: auto;
+    transform: none !important;
+  }
+
+  .portfolio-grid {
+    gap: 0.85rem;
+  }
+
+  .work-card {
+    max-width: 25rem;
+    margin: 0 auto;
+  }
+
+  .work-body {
+    gap: 0.82rem;
+    padding: 0.95rem;
+  }
+
+  .work-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .work-tags span {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .work-card[data-shape="vertical"] {
+    max-width: 18.5rem;
+  }
+
+  .work-card[data-shape="vertical"] .work-preview {
+    aspect-ratio: 4 / 5;
+  }
+
+  .work-card[data-shape="horizontal"] .work-preview,
+  .work-preview {
+    aspect-ratio: 16 / 10;
+  }
+}
