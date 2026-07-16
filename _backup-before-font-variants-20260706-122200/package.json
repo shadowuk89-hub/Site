@@ -1,0 +1,10 @@
+{
+  "name": "video-editor-premium-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/validate-static.mjs",
+    "start": "node scripts/serve-static.mjs"
+  }
+}
